@@ -3,9 +3,7 @@ const Animal = ({ animal, handleOnRemove, handleOnMoveTop, index }) => {
     <tr>
       <td>{animal.species}</td>
       <td>{animal.name}</td>
-      <td>
-        {animal.birthday ? animal.birthday.toLocaleDateString() : "Nepoznat"}
-      </td>
+      <td>{animal.birthday ? animal.birthday : "Nepoznat"}</td>
       <td>
         <button onClick={() => handleOnRemove(index)}>Remove</button>
       </td>
