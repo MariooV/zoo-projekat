@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Animal from "./Animal";
 
 const AnimalList = () => {
   const [animals, setAnimals] = useState([
@@ -8,6 +9,11 @@ const AnimalList = () => {
     { species: "bird", name: "owl", birthday: new Date() },
     { species: "bird", name: "eagel", birthday: new Date() },
   ]);
+
+  const handleOnRemove = (index) => {
+    setAnimals((prevValue) => prevValue.filter((animal, i) => i !== index));
+  };
+
   return (
     <table>
       <thead>
@@ -15,19 +21,17 @@ const AnimalList = () => {
           <th>Species</th>
           <th>Name</th>
           <th>Birthday</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {animals.map((animal, index) => (
-          <tr key={index}>
-            <td>{animal.species}</td>
-            <td>{animal.name}</td>
-            <td>
-              {animal.birthday
-                ? animal.birthday.toLocaleDateString()
-                : "Nepoznat"}
-            </td>
-          </tr>
+          <Animal
+            key={index}
+            animal={animal}
+            handleOnRemove={handleOnRemove}
+            index={index}
+          />
         ))}
       </tbody>
     </table>
