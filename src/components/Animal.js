@@ -1,4 +1,4 @@
-const Animal = ({ animal, handleOnRemove, index }) => {
+const Animal = ({ animal, handleOnRemove, handleOnMoveTop, index }) => {
   return (
     <tr>
       <td>{animal.species}</td>
@@ -8,6 +8,15 @@ const Animal = ({ animal, handleOnRemove, index }) => {
       </td>
       <td>
         <button onClick={() => handleOnRemove(index)}>Remove</button>
+      </td>
+      <td>
+        <button
+          onClick={() => {
+            handleOnMoveTop(index);
+          }}
+        >
+          Move to top
+        </button>
       </td>
     </tr>
   );

@@ -14,6 +14,13 @@ const AnimalList = () => {
     setAnimals((prevValue) => prevValue.filter((animal, i) => i !== index));
   };
 
+  const handleOnMoveTop = (index) => {
+    setAnimals((prevValue) => [
+      prevValue[index],
+      ...prevValue.filter((animal, i) => i !== index),
+    ]);
+  };
+
   return (
     <table>
       <thead>
@@ -21,6 +28,7 @@ const AnimalList = () => {
           <th>Species</th>
           <th>Name</th>
           <th>Birthday</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -30,6 +38,7 @@ const AnimalList = () => {
             key={index}
             animal={animal}
             handleOnRemove={handleOnRemove}
+            handleOnMoveTop={handleOnMoveTop}
             index={index}
           />
         ))}
